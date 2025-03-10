@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Pet Store Test" verbose="1">
+    <test name="User Tests">
+        <classes>
+            <class name="org.globant.automation.tests.CreateUserTest"></class>
+            <class name="org.globant.automation.tests.LoginWithUserTest"></class>
+            <class name="org.globant.automation.tests.LogoutUserTest"></class>
+            <class name="org.globant.automation.tests.GetPetInfoTest"></class>
+        </classes>
+    </test>
+
+</suite>
