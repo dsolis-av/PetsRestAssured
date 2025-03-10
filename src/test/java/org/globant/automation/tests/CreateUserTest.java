@@ -1,5 +1,6 @@
 package org.globant.automation.tests;
 import io.restassured.response.Response;
+import lombok.Data;
 import org.globant.automation.config.TestRunner;
 import org.globant.automation.model.CreateUserDTO;
 import org.globant.automation.model.UserResponseDTO;
@@ -18,10 +19,25 @@ public class CreateUserTest extends TestRunner {
                     198,"testuser19","Test","User","testuser@gmail.com","12345234","91283918",0
                 },
                 {
-                    231,"anotheruser","Mario","Pérez","marioperez@gmail.com","12345234","91283918",0
+                    231,"anotheruser","Mario","Pérez","marioperez@gmail.com","jwhd3aaL","323828",0
                 },
                 {
-                    939,"thirduser","John","Wick","johnwick@gmail.com","12345234","91283918",0
+                    939,"thirduser","John","Wick","johnwick@gmail.com","kaUaslM","277272",0
+                },
+        };
+    }
+
+    @DataProvider(name="User creation with malformed data")
+    public Object[][] createUserMalformedData(){
+        return new Object[][]{
+                {
+                        191,"sauhdua","Login","User1","___@___.com","12345234","91283918",0
+                },
+                {
+                        3993,"asdkljak","Login sjadkj","User malformed test","userlogin2_gmail.com","$%&A(a1","91283918",0
+                },
+                {
+                        81,"userlogsaksaj","Login","malformed user","userlogin3_gmail.com ñ","ñ-1!-.s","91283918",0
                 },
         };
     }
@@ -43,10 +59,16 @@ public class CreateUserTest extends TestRunner {
     }
 
     @Test(testName = "Validate creation of a user", dataProvider = "User creation")
-    public void createUserTestAssertion(int id, String username, String firstName, String lastName, String email, String password, String phone, int status){
+    public void createUserTest(int id, String username, String firstName, String lastName, String email, String password, String phone, int status){
 
         UserResponseDTO createUserResponseDTO = createUserRequest(id, username, firstName, lastName, email, password, phone, status);
-        assertEquals(createUserResponseDTO.getCode(), 200, "Status code doesn't match");
+        assertEquals(createUserResponseDTO.getCode(), 200, "Status code doesn't match. User creation failed.");
+    }
 
+    @Test(testName = "Reject creation of malformed user", dataProvider = "User creation with malformed data")
+    public void createInvalidUserTest(int id, String username, String firstName, String lastName, String email, String password, String phone, int status){
+
+        UserResponseDTO createUserResponseDTO = createUserRequest(id, username, firstName, lastName, email, password, phone, status);
+        assertEquals(createUserResponseDTO.getCode(), 400, "Status code doesn't match. User creation should be rejected.");
     }
 }

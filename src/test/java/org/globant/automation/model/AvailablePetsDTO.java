@@ -11,11 +11,6 @@ import java.util.ArrayList;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class PetResponseDTO {
-    private long id;
-    private CategoryDTO category;
-    private String name;
-    private ArrayList<String> photoUrls;
-    private ArrayList<CategoryDTO> tags;
-    private String status;
+public class AvailablePetsDTO {
+    private ArrayList<PetResponseDTO> availablePets;
 }

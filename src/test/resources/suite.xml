@@ -6,6 +6,8 @@
             <class name="org.globant.automation.tests.LoginWithUserTest"></class>
             <class name="org.globant.automation.tests.LogoutUserTest"></class>
             <class name="org.globant.automation.tests.GetPetInfoTest"></class>
+            <class name="org.globant.automation.tests.PlacePetPurchaseTest"></class>
+            <class name="org.globant.automation.tests.GetAvailablePetsTest"></class>
         </classes>
     </test>
 
