@@ -23,5 +23,5 @@ Each test uses custom DTOs to serialize/deserialize API data and runs through a 
 mvn clean install
 ```
 
-5. Using IntelliJ, make sure you have installed the Lombok plugin.
-6. With IntelliJ, open the project and execute each test class to validate scenarios individually, or run the suite.xml file to execute the whole suite.
+5. Using IntelliJ, make sure you have installed the Lombok plugin and have enabled annotation processing. Otherwise, builder method from Lombok won't work when it's needed.
+6. With IntelliJ, open the project and execute each test class to validate scenarios individually. You can also run the suite.xml file to execute the whole suite.
