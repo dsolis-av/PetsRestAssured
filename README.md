@@ -1,6 +1,6 @@
 # Automated API Testing - Swagger Pet Store
 
-This project is an automated testing suite developed in Java to validate the Swagger Pet Store API. It uses the **RestAssured** library for HTTP requests and **TestNG** as the test framework. The goal is to ensure the correct functionality of the API endpoints for user management, pet management, and order placement.
+This project is an automated testing suite developed in Java to validate the [Swagger Pet Store API](https://petstore.swagger.io). It uses the **RestAssured** library for HTTP requests and **TestNG** as the test framework. The goal is to ensure the correct functionality of the API endpoints for user management, pet management, and order placement.
 
 ## What It Does
 
