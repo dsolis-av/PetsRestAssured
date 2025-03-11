@@ -13,6 +13,7 @@ import static org.testng.Assert.assertEquals;
 @Slf4j
 public class GetPetInfoTest extends TestRunner {
 
+    //First we define our data providers to execute multiple tests
     @DataProvider(name="Valid pet ids")
     public Object[][] validPetIdsData(){
         return new Object[][] {
@@ -31,6 +32,7 @@ public class GetPetInfoTest extends TestRunner {
         };
     }
 
+    //Get pet details with VALID id
     @Test(testName = "Query pet details", dataProvider = "Valid pet ids")
     public void getPetDetailsTest(String petId){
         Response petResponse = RequestBuilder.getRequest(getBaseUrl(), "/pet/" + petId);
@@ -40,6 +42,7 @@ public class GetPetInfoTest extends TestRunner {
         log.info(petResponseDTO.getStatus());
     }
 
+    //Get pet details with INVALID id
     @Test(testName = "Query pet details with invalid id", dataProvider = "Invalid pet ids")
     public void getInvalidPetDetailsTest(String petId){
         Response petResponse = RequestBuilder.getRequest(getBaseUrl(), "/pet/" + petId);

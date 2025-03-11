@@ -1,7 +1,4 @@
 package org.globant.automation.config;
-
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.FileInputStream;
@@ -13,12 +10,14 @@ public class TestRunner {
     private static final Properties PROPERTIES = new Properties();
     private static String baseUrl;
 
+    //Method to set up environment properties. To be executed before the suite starts
     @BeforeSuite
     public void setUpEnvironment() {
         loadProperties();
         baseUrl = getConfigVariable("url.base");
     }
 
+    //Load properties from config files
     private void loadProperties(){
         try {
             FileInputStream fileInputStream = new FileInputStream(PROPERTIES_FILE);

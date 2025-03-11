@@ -1,6 +1,5 @@
 package org.globant.automation.tests;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.restassured.response.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.globant.automation.config.TestRunner;
@@ -13,6 +12,7 @@ import static org.testng.Assert.assertEquals;
 @Slf4j
 public class PlacePetPurchaseTest extends TestRunner {
 
+    //First we define our data providers to execute multiple tests
     @DataProvider(name="Pet purchase orders")
     public Object[][] createUserData(){
         return new Object[][] {
@@ -28,8 +28,9 @@ public class PlacePetPurchaseTest extends TestRunner {
         };
     }
 
+    //Place a pet purchase order
     @Test(testName = "Place a pet purchase order", dataProvider = "Pet purchase orders")
-    public void placePetPurchaseTest(int id, int petId, int quantity, String shipDate, String status, boolean complete){
+    public void DplacePetPurchaseTest(int id, int petId, int quantity, String shipDate, String status, boolean complete){
         PetPurchaseDTO petPurchaseDTO = PetPurchaseDTO.builder()
                 .id(id)
                 .petId(petId)

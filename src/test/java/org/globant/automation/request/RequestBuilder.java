@@ -7,6 +7,7 @@ import io.restassured.specification.RequestSpecification;
 
 public class RequestBuilder {
 
+    //Reusable method to send get requests
     public static Response getRequest(String baseUrl, String path) {
         RequestSpecification requestSpecification = RestAssured.given()
                 .baseUri(baseUrl)
@@ -17,6 +18,7 @@ public class RequestBuilder {
         return requestSpecification.get(path);
     }
 
+    //Reusable method to send post requests
     public static Response postRequest(String baseUrl, String path, Object body) {
         RequestSpecification requestSpecification = RestAssured.given()
                 .baseUri(baseUrl)

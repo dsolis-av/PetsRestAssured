@@ -1,6 +1,5 @@
 package org.globant.automation.tests;
 import io.restassured.response.Response;
-import lombok.Data;
 import org.globant.automation.config.TestRunner;
 import org.globant.automation.model.CreateUserDTO;
 import org.globant.automation.model.UserResponseDTO;
@@ -12,6 +11,7 @@ import static org.testng.Assert.assertEquals;
 
 public class CreateUserTest extends TestRunner {
 
+    //First we define our data providers to execute multiple tests
     @DataProvider(name="User creation")
     public Object[][] createUserData(){
         return new Object[][] {
@@ -42,6 +42,7 @@ public class CreateUserTest extends TestRunner {
         };
     }
 
+    //Reusable method to send a post request to create a user
     public static UserResponseDTO createUserRequest(int id, String username, String firstName, String lastName, String email, String password, String phone, int status){
         CreateUserDTO createUserDTO = CreateUserDTO.builder()
                 .id(id)
@@ -58,6 +59,7 @@ public class CreateUserTest extends TestRunner {
         return createUserResponseDTO;
     }
 
+    //Creation of a user with VALID data
     @Test(testName = "Validate creation of a user", dataProvider = "User creation")
     public void createUserTest(int id, String username, String firstName, String lastName, String email, String password, String phone, int status){
 
@@ -65,6 +67,7 @@ public class CreateUserTest extends TestRunner {
         assertEquals(createUserResponseDTO.getCode(), 200, "Status code doesn't match. User creation failed.");
     }
 
+    //Creation of a user with INVALID data
     @Test(testName = "Reject creation of malformed user", dataProvider = "User creation with malformed data")
     public void createInvalidUserTest(int id, String username, String firstName, String lastName, String email, String password, String phone, int status){
 

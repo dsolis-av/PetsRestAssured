@@ -1,5 +1,4 @@
 package org.globant.automation.model;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
